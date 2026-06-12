@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        
+        int[] arr = {a, b, c};
+        Arrays.sort(arr);
+        int secondLargest = arr[1];
+
+        
+        int gcd = findGCD(a, findGCD(b, c));
+
+        System.out.println("The treasure is in the box which has number " + secondLargest + ".");
+        System.out.println("The code to open the box is " + gcd + ".");
+    }
+
+    public static int findGCD(int x, int y) {
+        while (y != 0) {
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        return x;
+    }
+}
